@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "850981150552",
+    "firebase_url": "https://fast-learn-cad0c.firebaseio.com",
+    "project_id": "fast-learn-cad0c",
+    "storage_bucket": "fast-learn-cad0c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:850981150552:android:b850c6b402d82d508c4f2d",
+        "android_client_info": {
+          "package_name": "com.example.rtech.fastlearn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "850981150552-jdm9elm6b80iqo29pt50ovqgas0m2gmp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.rtech.fastlearn",
+            "certificate_hash": "e695bd4b7169ebc348aeea71997d0b58daaf83f2"
+          }
+        },
+        {
+          "client_id": "850981150552-h4qardsc1u4slcrfouuvssh2fjfof8aq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAv_sl78-chtra7F3WuIP8_KVcukVQW4M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "850981150552-h4qardsc1u4slcrfouuvssh2fjfof8aq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

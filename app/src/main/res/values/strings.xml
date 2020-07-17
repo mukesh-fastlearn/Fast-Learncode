@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">FAST LEARN</string>
+    <string name="button888">SIGN UP</string>
+    <string name="textview155">Register</string>
+    <string name="classes">CLASSES</string>
+    <string name="classes1">example</string>
+
+    <string name="button8">V11</string>
+    <string name="button">Logout</string>
+    <string name="button3">Classes</string>
+    <string name="button7">V</string>
+    <string name="textview2">Classes</string>
+    <string name="button4">V</string>
+    <string name="button5">V I</string>
+    <string name="button6">V I I</string>
+    <string name="button11">V I I I</string>
+    <string name="btn12">I X </string>
+    <string name="button9">X</string>
+    <string name="button10">XI</string>
+    <string name="btnt12">XII</string>
+    <string name="textview12">Already have an account? Login here</string>
+</resources>
