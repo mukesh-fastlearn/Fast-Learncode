@@ -26,7 +26,7 @@ public class Class8 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_class8);
         webView = (WebView) findViewById(R.id.webview7);
-        webView.loadUrl("https://fast-learn17.web.app/8th%20class.html");
+        webView.loadUrl("https://fast-learn17.web.app/9th%20class.html");
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setBuiltInZoomControls(true);
