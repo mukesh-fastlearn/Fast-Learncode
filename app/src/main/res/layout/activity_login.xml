@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".Login">
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/ltyg"/>
+
     <EditText
         android:id="@+id/Email1"
         android:layout_width="match_parent"
@@ -14,8 +24,8 @@
         android:importantForAutofill="no"
         android:inputType="textEmailAddress"
         android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
+        android:textColor="@color/cardview_dark_background"
+        android:textColorHint="@color/cardview_dark_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -31,7 +41,7 @@
         android:importantForAutofill="no"
         android:inputType="textPassword"
         android:textAlignment="center"
-        android:textColorHint="@color/white"
+        android:textColorHint="@color/cardview_dark_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -43,9 +53,10 @@
         android:id="@+id/loginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#F44336"
         android:text="@string/button888"
         android:textAlignment="center"
-        android:textColor="@color/white"
+        android:textColor="@color/design_default_color_secondary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

@@ -23,7 +23,7 @@ public class IPCC_Login extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(IPCC_Login.this,Tution_classes.class);
+                Intent intent = new Intent(IPCC_Login.this,Login.class);
                 startActivity(intent);
                 finish();
             }

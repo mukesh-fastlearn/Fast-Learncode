@@ -4,9 +4,15 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ArrayAdapter;
@@ -16,6 +22,7 @@ import java.util.ArrayList;
 
 import java.util.List;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,63 +32,85 @@ import com.google.firebase.database.ValueEventListener;
 
 public class pdfView extends AppCompatActivity {
 
-    ListView listView;
-    DatabaseReference databaseReference;
-    List<uploadPDF> uploadPDFS;
+    WebView webView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pdf_view);
 
-        listView = (ListView)findViewById(R.id.List1);
-        uploadPDFS = new ArrayList<>();
+        webView = (WebView) findViewById(R.id.web1);
+        webView.loadUrl("https://fast-learn17.com/Notes");
+        WebSettings webSettings = webView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        webSettings.setBuiltInZoomControls(true);
+        webView.setWebViewClient(new WebViewClient());
 
-        viewAllFiles();
+        //Initialize and Assign Variable
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
+        //Set Home Selected
+        bottomNavigationView.setSelectedItemId(R.id.home);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        //Perform ItemSelectListener
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                uploadPDF uploadPDF = uploadPDFS.get(position);
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuitem) {
+                switch (menuitem.getItemId()) {
+                    case R.id.dashboard:
+                        startActivity(new Intent(getApplicationContext()
+                                , Live.class));
+                        overridePendingTransition(0, 0);
+                        return true;
 
-                Intent intent = new Intent(getApplicationContext(),Fullview.class);
-                intent.setType(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse(uploadPDF.getUrl()));
-                startActivity(intent);
+                    case R.id.home:
+                        startActivity(new Intent(getApplicationContext()
+                                , Class8notes.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+
+                    case R.id.notes:
+                        startActivity(new Intent(getApplicationContext()
+                                , Classes.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+
+                }
+                return true;
             }
         });
-
-
 
     }
 
-    private void viewAllFiles() {
+    public class myWebClient extends WebViewClient implements com.example.rtech.fastlearn.myWebClient {
+        @Override
+        public void onPageStarted(WebView view, String url, Bitmap favicon) {
+            super.onPageStarted(view, url, favicon);
+        }
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("uploads");
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+        @Override
+        public boolean shouldOverrideUrlLoding(WebView view, String url) {
+            view.loadUrl(url);
+            return true;
+        }
 
-                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()){
+    }
 
-                    uploadPDF uploadPDF = postSnapshot.getValue(com.example.rtech.fastlearn.uploadPDF.class);
-                    uploadPDFS.add(uploadPDF);
-                }
 
-                String[] uploads = new String[uploadPDFS.size()];
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (event.getAction() == KeyEvent.ACTION_DOWN) {
+            switch (keyCode) {
 
-                for (int i=0;i<uploads.length;i++){
-                    uploads[i]= uploadPDFS.get(i).getName();
-                }
-
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_list_item_1,uploads);
-                listView.setAdapter(adapter);
+                case KeyEvent.KEYCODE_BACK:
+                    if (webView.canGoBack()) {
+                        webView.goBack();
+                    } else {
+                        finish();
+                    }
+                    return true;
             }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }
+

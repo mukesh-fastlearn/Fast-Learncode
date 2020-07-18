@@ -33,7 +33,7 @@ public class Tution_classes extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tution_classes);
         webView = (WebView) findViewById(R.id.webview9);
-        webView.loadUrl("https://fastlearn17.com/wp5");
+        webView.loadUrl("https://fastlearn17.com/Test");
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient());
